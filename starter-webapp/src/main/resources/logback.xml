@@ -15,7 +15,7 @@
         </layout>
     </appender>
 
-    <logger name="liveproject.m2k8s.web" level="DEBUG">
+    <logger name="liveproject.m2k8s.controller" level="DEBUG">
         <appender-ref ref="SQLLOG"/>
     </logger>
     <logger name="org.hibernate.type" level="ALL">

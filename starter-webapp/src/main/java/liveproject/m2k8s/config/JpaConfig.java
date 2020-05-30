@@ -1,6 +1,6 @@
 package liveproject.m2k8s.config;
 
-import liveproject.m2k8s.Application;
+import liveproject.m2k8s.LiveProjectApplication;
 import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +39,7 @@ class JpaConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
 
-        String entities = ClassUtils.getPackageName(Application.class);
+        String entities = ClassUtils.getPackageName(LiveProjectApplication.class);
         entityManagerFactoryBean.setPackagesToScan(entities);
 
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());

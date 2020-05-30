@@ -1,7 +1,7 @@
-package liveproject.m2k8s.web;
+package liveproject.m2k8s.controller;
 
-import liveproject.m2k8s.Profile;
-import liveproject.m2k8s.data.ProfileRepository;
+import liveproject.m2k8s.model.Profile;
+import liveproject.m2k8s.repository.ProfileRepository;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 
