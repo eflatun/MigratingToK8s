@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: profiles
+  name: profiles
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: profiles
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: profiles
+    spec:
+      containers:
+      - image: omerfc1/liveproject
+        name: liveproject
+        resources: {}
