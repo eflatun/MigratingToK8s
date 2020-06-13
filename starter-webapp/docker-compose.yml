@@ -1,5 +1,20 @@
-version: '3'
+version: '3.7'
 services:
+  profiles:
+    build: ./
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    environment:
+      WAIT_HOSTS: dockermysql:3306
+    depends_on:
+      - dockermysql
+    networks:
+      - backend
+    volumes:
+      - images-data:/data
+      - ./sql:/docker-entrypoint-initdb.d
   dockermysql:
     restart: always
     container_name: dockermysql
@@ -9,11 +24,18 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_ROOT_HOST: '%'
     volumes:
-      - ./sql:/docker-entrypoint-initdb.d
+      - db-data:/var/lib/mysql
+    networks:
+      - backend
     ports:
-      - "6033:3306"
+      - "3306:3306"
     healthcheck:
       test: "/usr/bin/mysql --user=root --password=root--execute \"SHOW DATABASES;\""
       interval: 2s
       timeout: 20s
       retries: 10
+volumes:
+  db-data:
+  images-data:
+networks:
+  backend:

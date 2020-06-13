@@ -1,8 +1,4 @@
-FROM openjdk:8-jdk-alpine
-FROM maven:alpine
-WORKDIR /app
-COPY . /app
-RUN mvn clean install -DskipTests
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} profiles.jar
-ENTRYPOINT ["java","-jar","/profiles.jar"]
+FROM adoptopenjdk:11-jre-hotspot
+RUN mkdir /opt/app
+COPY ./target/profiles.jar /opt/app
+ENTRYPOINT ["java","-jar","/opt/app/profiles.jar"]
